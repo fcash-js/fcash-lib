@@ -54020,7 +54020,7 @@ arguments[4][262][0].apply(exports,arguments)
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{}],320:[function(require,module,exports){
 module.exports={
-  "name": "bitcore-lib",
+  "name": "fcash-lib",
   "version": "0.15.0",
   "description": "A pure and powerful JavaScript Bitcoin library.",
   "author": "BitPay <dev@bitpay.com>",
@@ -54049,7 +54049,7 @@ module.exports={
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/bitpay/bitcore-lib.git"
+    "url": "https://github.com/fcash-project/fcash-lib.git"
   },
   "browser": {
     "request": "browser-request"
@@ -54072,7 +54072,7 @@ module.exports={
   "license": "MIT"
 }
 
-},{}],"bitcore-lib":[function(require,module,exports){
+},{}],"fcash-lib":[function(require,module,exports){
 (function (global,Buffer){
 'use strict';
 
@@ -54082,9 +54082,9 @@ var bitcore = module.exports;
 bitcore.version = 'v' + require('./package.json').version;
 bitcore.versionGuard = function(version) {
   if (version !== undefined) {
-    var message = 'More than one instance of bitcore-lib found. ' +
-      'Please make sure to require bitcore-lib and check that submodules do' +
-      ' not also include their own bitcore-lib dependency.';
+    var message = 'More than one instance of fcash-lib found. ' +
+      'Please make sure to require fcash-lib and check that submodules do' +
+      ' not also include their own fcash-lib dependency.';
     throw new Error(message);
   }
 };
