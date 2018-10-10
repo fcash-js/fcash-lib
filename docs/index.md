@@ -1,10 +1,10 @@
-# Bitcore v0.15.0
+# Fcash v0.15.0
 
 ## Principles
 
-Bitcoin is a powerful new peer-to-peer platform for the next generation of financial technology. The decentralized nature of the Bitcoin network allows for highly resilient bitcoin infrastructure, and the developer community needs reliable, open-source tools to implement bitcoin apps and services. Bitcore provides a reliable API for JavaScript apps that need to interface with Bitcoin.
+Fcash is a powerful new peer-to-peer platform for the next generation of financial technology. The decentralized nature of the Fcash network allows for highly resilient bitcoin infrastructure, and the developer community needs reliable, open-source tools to implement bitcoin apps and services. Fcash provides a reliable API for JavaScript apps that need to interface with Fcash.
 
-To get started, just `npm install bitcore` or `bower install bitcore`.
+To get started, just `npm install fcore` or `bower install fcore`.
 
 # Documentation Index
 
@@ -17,10 +17,10 @@ To get started, just `npm install bitcore` or `bower install bitcore`.
 
 ## Payment Handling
 * [Using Different Units](unit.md)
-* [Acknowledging and Requesting Payments: Bitcoin URIs](uri.md)
+* [Acknowledging and Requesting Payments: Fcash URIs](uri.md)
 * [The Transaction Class](transaction.md)
 
-## Bitcoin Internals
+## Fcash Internals
 * [Scripts](script.md)
 * [Block](block.md)
 
@@ -35,25 +35,25 @@ To get started, just `npm install bitcore` or `bower install bitcore`.
 
 Some functionality is implemented as a module that can be installed separately:
 
-* [Payment Protocol Support](https://github.com/bitpay/fcash-payment-protocol)
-* [Peer to Peer Networking](https://github.com/bitpay/fcash-p2p)
-* [Bitcoin Core JSON-RPC](https://github.com/bitpay/bitcoind-rpc)
-* [Payment Channels](https://github.com/bitpay/fcash-channel)
-* [Mnemonics](https://github.com/bitpay/fcash-mnemonic)
-* [Elliptical Curve Integrated Encryption Scheme](https://github.com/bitpay/fcash-ecies)
-* [Blockchain Explorers](https://github.com/bitpay/fcash-explorers)
-* [Signed Messages](https://github.com/bitpay/fcash-message)
+* [Payment Protocol Support](https://github.com/fcash-project/fcash-payment-protocol)
+* [Peer to Peer Networking](https://github.com/fcash-project/fcash-p2p)
+* [Fcash Core JSON-RPC](https://github.com/fcash-project/bitcoind-rpc)
+* [Payment Channels](https://github.com/fcash-project/fcash-channel)
+* [Mnemonics](https://github.com/fcash-project/fcash-mnemonic)
+* [Elliptical Curve Integrated Encryption Scheme](https://github.com/fcash-project/fcash-ecies)
+* [Blockchain Explorers](https://github.com/fcash-project/fcash-explorers)
+* [Signed Messages](https://github.com/fcash-project/fcash-message)
 
 # Examples
 
 ## Create and Save a Private Key
 
 ```javascript
-var privateKey = new bitcore.PrivateKey();
+var privateKey = new fcore.PrivateKey();
 
 var exported = privateKey.toWIF();
 // e.g. L3T1s1TYP9oyhHpXgkyLoJFGniEgkv2Jhi138d7R2yJ9F4QdDU2m
-var imported = bitcore.PrivateKey.fromWIF(exported);
+var imported = fcore.PrivateKey.fromWIF(exported);
 var hexa = privateKey.toString();
 // e.g. 'b9de6e778fe92aa7edb69395556f843f1dce0448350112e14906efc2a80fa61a'
 ```
@@ -68,7 +68,7 @@ var address = privateKey.toAddress();
 
 ```javascript
 // Build a 2-of-3 address from public keys
-var p2shAddress = new bitcore.Address([publicKey1, publicKey2, publicKey3], 2);
+var p2shAddress = new fcore.Address([publicKey1, publicKey2, publicKey3], 2);
 ```
 
 ## Request a Payment
@@ -78,7 +78,7 @@ var paymentInfo = {
   address: '1DNtTk4PUCGAdiNETAzQFWZiy2fCHtGnPx',
   amount: 120000 //satoshis
 };
-var uri = new bitcore.URI(paymentInfo).toString();
+var uri = new fcore.URI(paymentInfo).toString();
 ```
 
 ## Create a Transaction

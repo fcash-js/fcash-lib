@@ -1,5 +1,5 @@
 
 
-var bitcoreTasks = require('fcash-build');
+var fcoreTasks = require('fcash-build');
 
-bitcoreTasks('lib');
+fcoreTasks('lib');

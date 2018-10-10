@@ -5,11 +5,11 @@ Fcash Library
 [![Build Status](https://img.shields.io/travis/fcash-project/fcash-lib.svg?branch=master&style=flat-square)](https://travis-ci.org/fcash-project/fcash-lib)
 [![Coverage Status](https://img.shields.io/coveralls/fcash-project/fcash-lib.svg?style=flat-square)](https://coveralls.io/r/fcash-project/fcash-lib)
 
-A pure and powerful JavaScript Bitcoin library.
+A pure and powerful JavaScript Fcash library.
 
 ## Principles
 
-Bitcoin is a powerful new peer-to-peer platform for the next generation of financial technology. The decentralized nature of the Bitcoin network allows for highly resilient bitcoin infrastructure, and the developer community needs reliable, open-source tools to implement bitcoin apps and services.
+Fcash is a powerful new peer-to-peer platform for the next generation of financial technology. The decentralized nature of the Fcash network allows for highly resilient bitcoin infrastructure, and the developer community needs reliable, open-source tools to implement bitcoin apps and services.
 
 ## Get Started
 
@@ -23,12 +23,12 @@ bower install fcash-lib
 
 ## Documentation
 
-The complete docs are hosted here: [bitcore documentation](http://bitcore.io/guide/). There's also a [bitcore API reference](http://bitcore.io/api/) available generated from the JSDocs of the project, where you'll find low-level details on each bitcore utility.
+The complete docs are hosted here: [fcore documentation](http://www.fcash.cash/guide/). There's also a [fcore API reference](http://www.fcash.cash/api/) available generated from the JSDocs of the project, where you'll find low-level details on each fcore utility.
 
-- [Read the Developer Guide](http://bitcore.io/guide/)
-- [Read the API Reference](http://bitcore.io/api/)
+- [Read the Developer Guide](http://www.fcash.cash/guide/)
+- [Read the API Reference](http://www.fcash.cash/api/)
 
-To get community assistance and ask for help with implementation questions, please use our [community forums](https://forum.bitcore.io/).
+To get community assistance and ask for help with implementation questions, please use our [community forums](https://forum.fcash.cash/).
 
 ## Examples
 
@@ -36,8 +36,8 @@ To get community assistance and ask for help with implementation questions, plea
 * [Generate a address from a SHA256 hash](https://github.com/fcash-project/fcash-lib/blob/master/docs/examples.md#generate-a-address-from-a-sha256-hash)
 * [Import an address via WIF](https://github.com/fcash-project/fcash-lib/blob/master/docs/examples.md#import-an-address-via-wif)
 * [Create a Transaction](https://github.com/fcash-project/fcash-lib/blob/master/docs/examples.md#create-a-transaction)
-* [Sign a Bitcoin message](https://github.com/fcash-project/fcash-lib/blob/master/docs/examples.md#sign-a-bitcoin-message)
-* [Verify a Bitcoin message](https://github.com/fcash-project/fcash-lib/blob/master/docs/examples.md#verify-a-bitcoin-message)
+* [Sign a Fcash message](https://github.com/fcash-project/fcash-lib/blob/master/docs/examples.md#sign-a-bitcoin-message)
+* [Verify a Fcash message](https://github.com/fcash-project/fcash-lib/blob/master/docs/examples.md#verify-a-bitcoin-message)
 * [Create an OP RETURN transaction](https://github.com/fcash-project/fcash-lib/blob/master/docs/examples.md#create-an-op-return-transaction)
 * [Create a 2-of-3 multisig P2SH address](https://github.com/fcash-project/fcash-lib/blob/master/docs/examples.md#create-a-2-of-3-multisig-p2sh-address)
 * [Spend from a 2-of-2 multisig P2SH address](https://github.com/fcash-project/fcash-lib/blob/master/docs/examples.md#spend-from-a-2-of-2-multisig-p2sh-address)
@@ -45,9 +45,9 @@ To get community assistance and ask for help with implementation questions, plea
 
 ## Security
 
-We're using Bitcore in production, as are [many others](http://bitcore.io#projects), but please use common sense when doing anything related to finances! We take no responsibility for your implementation decisions.
+We're using Fcash in production, as are [many others](http://www.fcash.cash#projects), but please use common sense when doing anything related to finances! We take no responsibility for your implementation decisions.
 
-If you find a security issue, please email security@bitpay.com.
+If you find a security issue, please email security@fcash.cash.
 
 ## Contributing
 
@@ -93,4 +93,4 @@ or create a test coverage report (you can open `coverage/lcov-report/index.html`
 
 Code released under [the MIT license](https://github.com/fcash-project/fcash-lib/blob/master/LICENSE).
 
-Copyright 2013-2017 BitPay, Inc. Bitcore is a trademark maintained by BitPay, Inc.
+Copyright 2013-2017 Fcash, Inc. Fcash is a trademark maintained by Fcash, Inc.

@@ -2,14 +2,14 @@
 
 var should = require('chai').should();
 var sinon = require('sinon');
-var bitcore = require('../..');
-var Interpreter = bitcore.Script.Interpreter;
-var Transaction = bitcore.Transaction;
-var PrivateKey = bitcore.PrivateKey;
-var Script = bitcore.Script;
-var BN = bitcore.crypto.BN;
-var BufferWriter = bitcore.encoding.BufferWriter;
-var Opcode = bitcore.Opcode;
+var fcore = require('../..');
+var Interpreter = fcore.Script.Interpreter;
+var Transaction = fcore.Transaction;
+var PrivateKey = fcore.PrivateKey;
+var Script = fcore.Script;
+var BN = fcore.crypto.BN;
+var BufferWriter = fcore.encoding.BufferWriter;
+var Opcode = fcore.Opcode;
 var _ = require('lodash');
 
 var script_valid = require('../data/bitcoind/script_valid');
@@ -18,7 +18,7 @@ var tx_valid = require('../data/bitcoind/tx_valid');
 var tx_invalid = require('../data/bitcoind/tx_invalid');
 
 //the script string format used in bitcoind data tests
-Script.fromBitcoindString = function(str) {
+Script.fromFcashdString = function(str) {
   var bw = new BufferWriter();
   var tokens = str.split(' ');
   for (var i = 0; i < tokens.length; i++) {
@@ -301,8 +301,8 @@ describe('Interpreter', function() {
   };
 
   var testFixture = function(vector, expected) {
-    var scriptSig = Script.fromBitcoindString(vector[0]);
-    var scriptPubkey = Script.fromBitcoindString(vector[1]);
+    var scriptSig = Script.fromFcashdString(vector[0]);
+    var scriptPubkey = Script.fromFcashdString(vector[1]);
     var flags = getFlags(vector[2]);
 
     var hashbuf = new Buffer(32);
@@ -380,7 +380,7 @@ describe('Interpreter', function() {
             if (txoutnum === -1) {
               txoutnum = 0xffffffff; //bitcoind casts -1 to an unsigned int
             }
-            map[txid + ':' + txoutnum] = Script.fromBitcoindString(scriptPubKeyStr);
+            map[txid + ':' + txoutnum] = Script.fromFcashdString(scriptPubKeyStr);
           });
 
           var tx = new Transaction(txhex);

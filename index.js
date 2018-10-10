@@ -1,10 +1,10 @@
 'use strict';
 
-var bitcore = module.exports;
+var fcore = module.exports;
 
 // module information
-bitcore.version = 'v' + require('./package.json').version;
-bitcore.versionGuard = function(version) {
+fcore.version = 'v' + require('./package.json').version;
+fcore.versionGuard = function(version) {
   if (version !== undefined) {
     var message = 'More than one instance of fcash-lib found. ' +
       'Please make sure to require fcash-lib and check that submodules do' +
@@ -12,58 +12,58 @@ bitcore.versionGuard = function(version) {
     throw new Error(message);
   }
 };
-bitcore.versionGuard(global._bitcore);
-global._bitcore = bitcore.version;
+fcore.versionGuard(global._fcore);
+global._fcore = fcore.version;
 
 // crypto
-bitcore.crypto = {};
-bitcore.crypto.BN = require('./lib/crypto/bn');
-bitcore.crypto.ECDSA = require('./lib/crypto/ecdsa');
-bitcore.crypto.Hash = require('./lib/crypto/hash');
-bitcore.crypto.Random = require('./lib/crypto/random');
-bitcore.crypto.Point = require('./lib/crypto/point');
-bitcore.crypto.Signature = require('./lib/crypto/signature');
+fcore.crypto = {};
+fcore.crypto.BN = require('./lib/crypto/bn');
+fcore.crypto.ECDSA = require('./lib/crypto/ecdsa');
+fcore.crypto.Hash = require('./lib/crypto/hash');
+fcore.crypto.Random = require('./lib/crypto/random');
+fcore.crypto.Point = require('./lib/crypto/point');
+fcore.crypto.Signature = require('./lib/crypto/signature');
 
 // encoding
-bitcore.encoding = {};
-bitcore.encoding.Base58 = require('./lib/encoding/base58');
-bitcore.encoding.Base58Check = require('./lib/encoding/base58check');
-bitcore.encoding.BufferReader = require('./lib/encoding/bufferreader');
-bitcore.encoding.BufferWriter = require('./lib/encoding/bufferwriter');
-bitcore.encoding.Varint = require('./lib/encoding/varint');
+fcore.encoding = {};
+fcore.encoding.Base58 = require('./lib/encoding/base58');
+fcore.encoding.Base58Check = require('./lib/encoding/base58check');
+fcore.encoding.BufferReader = require('./lib/encoding/bufferreader');
+fcore.encoding.BufferWriter = require('./lib/encoding/bufferwriter');
+fcore.encoding.Varint = require('./lib/encoding/varint');
 
 // utilities
-bitcore.util = {};
-bitcore.util.buffer = require('./lib/util/buffer');
-bitcore.util.js = require('./lib/util/js');
-bitcore.util.preconditions = require('./lib/util/preconditions');
+fcore.util = {};
+fcore.util.buffer = require('./lib/util/buffer');
+fcore.util.js = require('./lib/util/js');
+fcore.util.preconditions = require('./lib/util/preconditions');
 
 // errors thrown by the library
-bitcore.errors = require('./lib/errors');
+fcore.errors = require('./lib/errors');
 
 // main bitcoin library
-bitcore.Address = require('./lib/address');
-bitcore.Block = require('./lib/block');
-bitcore.MerkleBlock = require('./lib/block/merkleblock');
-bitcore.BlockHeader = require('./lib/block/blockheader');
-bitcore.HDPrivateKey = require('./lib/hdprivatekey.js');
-bitcore.HDPublicKey = require('./lib/hdpublickey.js');
-bitcore.Networks = require('./lib/networks');
-bitcore.Opcode = require('./lib/opcode');
-bitcore.PrivateKey = require('./lib/privatekey');
-bitcore.PublicKey = require('./lib/publickey');
-bitcore.Script = require('./lib/script');
-bitcore.Transaction = require('./lib/transaction');
-bitcore.URI = require('./lib/uri');
-bitcore.Unit = require('./lib/unit');
+fcore.Address = require('./lib/address');
+fcore.Block = require('./lib/block');
+fcore.MerkleBlock = require('./lib/block/merkleblock');
+fcore.BlockHeader = require('./lib/block/blockheader');
+fcore.HDPrivateKey = require('./lib/hdprivatekey.js');
+fcore.HDPublicKey = require('./lib/hdpublickey.js');
+fcore.Networks = require('./lib/networks');
+fcore.Opcode = require('./lib/opcode');
+fcore.PrivateKey = require('./lib/privatekey');
+fcore.PublicKey = require('./lib/publickey');
+fcore.Script = require('./lib/script');
+fcore.Transaction = require('./lib/transaction');
+fcore.URI = require('./lib/uri');
+fcore.Unit = require('./lib/unit');
 
 // dependencies, subject to change
-bitcore.deps = {};
-bitcore.deps.bnjs = require('bn.js');
-bitcore.deps.bs58 = require('bs58');
-bitcore.deps.Buffer = Buffer;
-bitcore.deps.elliptic = require('elliptic');
-bitcore.deps._ = require('lodash');
+fcore.deps = {};
+fcore.deps.bnjs = require('bn.js');
+fcore.deps.bs58 = require('bs58');
+fcore.deps.Buffer = Buffer;
+fcore.deps.elliptic = require('elliptic');
+fcore.deps._ = require('lodash');
 
 // Internal usage, exposed for testing/advanced tweaking
-bitcore.Transaction.sighash = require('./lib/transaction/sighash');
+fcore.Transaction.sighash = require('./lib/transaction/sighash');

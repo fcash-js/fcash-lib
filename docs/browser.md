@@ -1,7 +1,7 @@
 # Browser Builds
-Bitcore and most official submodules work in the browser, thanks to [browserify](http://browserify.org/) (some modules are not fully compatible with web browsers).
+Fcash and most official submodules work in the browser, thanks to [browserify](http://browserify.org/) (some modules are not fully compatible with web browsers).
 
-The easiest and recommended way to use them, is via [Bower](http://bower.io/), a browser package manager, and get the release bundles. For example, when building an app that uses `bitcore` and `fcash-mnemonic`, you do:
+The easiest and recommended way to use them, is via [Bower](http://bower.io/), a browser package manager, and get the release bundles. For example, when building an app that uses `fcore` and `fcash-mnemonic`, you do:
 
 ```sh
 bower install fcash-lib
@@ -32,14 +32,14 @@ After this, you can include the bundled release versions in your HTML file:
 
 <head>
   <meta charset="utf-8">
-  <script src="bower_components/bitcore/fcash-lib.min.js"></script>
+  <script src="bower_components/fcore/fcash-lib.min.js"></script>
   <script src="bower_components/fcash-mnemonic/fcash-mnemonic.min.js"></script>
 </head>
 
 <body>
 
   <script type="text/javascript">
-    var bitcore = require('fcash-lib');
+    var fcore = require('fcash-lib');
     var Mnemonic = require('fcash-mnemonic');
     // etc...
   </script>
