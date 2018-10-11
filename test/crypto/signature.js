@@ -2,11 +2,11 @@
 
 var _ = require('lodash');
 var should = require('chai').should();
-var fcore = require('../..');
-var BN = fcore.crypto.BN;
-var Signature = fcore.crypto.Signature;
-var JSUtil = fcore.util.js;
-var Interpreter = fcore.Script.Interpreter;
+var fcash_base = require('../..');
+var BN = fcash_base.crypto.BN;
+var Signature = fcash_base.crypto.Signature;
+var JSUtil = fcash_base.util.js;
+var Interpreter = fcash_base.Script.Interpreter;
 
 var sig_canonical = require('../data/bitcoind/sig_canonical');
 var sig_noncanonical = require('../data/bitcoind/sig_noncanonical');

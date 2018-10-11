@@ -3,13 +3,13 @@
 var should = require('chai').should();
 var expect = require('chai').expect;
 
-var fcore = require('..');
-var Point = fcore.crypto.Point;
-var BN = fcore.crypto.BN;
-var PublicKey = fcore.PublicKey;
-var PrivateKey = fcore.PrivateKey;
-var Address = fcore.Address;
-var Networks = fcore.Networks;
+var fcashBase = require('..');
+var Point = fcashBase.crypto.Point;
+var BN = fcashBase.crypto.BN;
+var PublicKey = fcashBase.PublicKey;
+var PrivateKey = fcashBase.PrivateKey;
+var Address = fcashBase.Address;
+var Networks = fcashBase.Networks;
 
 /* jshint maxlen: 200 */
 

@@ -1,11 +1,11 @@
 'use strict';
 
-var fcore = require('../..');
+var fcash_base = require('../..');
 var BN = require('../../lib/crypto/bn');
-var BufferReader = fcore.encoding.BufferReader;
-var BufferWriter = fcore.encoding.BufferWriter;
+var BufferReader = fcash_base.encoding.BufferReader;
+var BufferWriter = fcash_base.encoding.BufferWriter;
 
-var BlockHeader = fcore.BlockHeader;
+var BlockHeader = fcash_base.BlockHeader;
 var fs = require('fs');
 var should = require('chai').should();
 

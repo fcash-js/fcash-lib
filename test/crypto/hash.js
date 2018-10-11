@@ -1,8 +1,8 @@
 'use strict';
 
 require('chai').should();
-var fcore = require('../..');
-var Hash = fcore.crypto.Hash;
+var fcash_base = require('../..');
+var Hash = fcash_base.crypto.Hash;
 
 describe('Hash', function() {
   var buf = new Buffer([0, 1, 2, 3, 253, 254, 255]);

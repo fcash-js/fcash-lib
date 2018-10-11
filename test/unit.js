@@ -3,9 +3,9 @@
 var should = require('chai').should();
 var expect = require('chai').expect;
 
-var fcore = require('..');
-var errors = fcore.errors;
-var Unit = fcore.Unit;
+var fcashBase = require('..');
+var errors = fcashBase.errors;
+var Unit = fcashBase.Unit;
 
 describe('Unit', function() {
 

@@ -4,7 +4,7 @@
 
 Fcash is a powerful new peer-to-peer platform for the next generation of financial technology. The decentralized nature of the Fcash network allows for highly resilient bitcoin infrastructure, and the developer community needs reliable, open-source tools to implement bitcoin apps and services. Fcash provides a reliable API for JavaScript apps that need to interface with Fcash.
 
-To get started, just `npm install fcore` or `bower install fcore`.
+To get started, just `npm install fcash-base` or `bower install fcash-base`.
 
 # Documentation Index
 
@@ -35,25 +35,25 @@ To get started, just `npm install fcore` or `bower install fcore`.
 
 Some functionality is implemented as a module that can be installed separately:
 
-* [Payment Protocol Support](https://github.com/fcash-project/fcash-payment-protocol)
-* [Peer to Peer Networking](https://github.com/fcash-project/fcash-p2p)
-* [Fcash Core JSON-RPC](https://github.com/fcash-project/bitcoind-rpc)
-* [Payment Channels](https://github.com/fcash-project/fcash-channel)
-* [Mnemonics](https://github.com/fcash-project/fcash-mnemonic)
-* [Elliptical Curve Integrated Encryption Scheme](https://github.com/fcash-project/fcash-ecies)
-* [Blockchain Explorers](https://github.com/fcash-project/fcash-explorers)
-* [Signed Messages](https://github.com/fcash-project/fcash-message)
+* [Payment Protocol Support](https://github.com/fcash-js/fcash-payment-protocol)
+* [Peer to Peer Networking](https://github.com/fcash-js/fcash-p2p)
+* [Fcash Core JSON-RPC](https://github.com/fcash-js/bitcoind-rpc)
+* [Payment Channels](https://github.com/fcash-js/fcash-channel)
+* [Mnemonics](https://github.com/fcash-js/fcash-mnemonic)
+* [Elliptical Curve Integrated Encryption Scheme](https://github.com/fcash-js/fcash-ecies)
+* [Blockchain Explorers](https://github.com/fcash-js/fcash-explorers)
+* [Signed Messages](https://github.com/fcash-js/fcash-message)
 
 # Examples
 
 ## Create and Save a Private Key
 
 ```javascript
-var privateKey = new fcore.PrivateKey();
+var privateKey = new fcash-base.PrivateKey();
 
 var exported = privateKey.toWIF();
 // e.g. L3T1s1TYP9oyhHpXgkyLoJFGniEgkv2Jhi138d7R2yJ9F4QdDU2m
-var imported = fcore.PrivateKey.fromWIF(exported);
+var imported = fcash-base.PrivateKey.fromWIF(exported);
 var hexa = privateKey.toString();
 // e.g. 'b9de6e778fe92aa7edb69395556f843f1dce0448350112e14906efc2a80fa61a'
 ```
@@ -68,7 +68,7 @@ var address = privateKey.toAddress();
 
 ```javascript
 // Build a 2-of-3 address from public keys
-var p2shAddress = new fcore.Address([publicKey1, publicKey2, publicKey3], 2);
+var p2shAddress = new fcash-base.Address([publicKey1, publicKey2, publicKey3], 2);
 ```
 
 ## Request a Payment
@@ -78,7 +78,7 @@ var paymentInfo = {
   address: '1DNtTk4PUCGAdiNETAzQFWZiy2fCHtGnPx',
   amount: 120000 //satoshis
 };
-var uri = new fcore.URI(paymentInfo).toString();
+var uri = new fcash-base.URI(paymentInfo).toString();
 ```
 
 ## Create a Transaction

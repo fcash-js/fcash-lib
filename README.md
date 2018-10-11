@@ -2,8 +2,8 @@ Fcash Library
 =======
 
 [![NPM Package](https://img.shields.io/npm/v/fcash-lib.svg?style=flat-square)](https://www.npmjs.org/package/fcash-lib)
-[![Build Status](https://img.shields.io/travis/fcash-project/fcash-lib.svg?branch=master&style=flat-square)](https://travis-ci.org/fcash-project/fcash-lib)
-[![Coverage Status](https://img.shields.io/coveralls/fcash-project/fcash-lib.svg?style=flat-square)](https://coveralls.io/r/fcash-project/fcash-lib)
+[![Build Status](https://img.shields.io/travis/fcash-js/fcash-lib.svg?branch=master&style=flat-square)](https://travis-ci.org/fcash-js/fcash-lib)
+[![Coverage Status](https://img.shields.io/coveralls/fcash-js/fcash-lib.svg?style=flat-square)](https://coveralls.io/r/fcash-js/fcash-lib)
 
 A pure and powerful JavaScript Fcash library.
 
@@ -23,7 +23,7 @@ bower install fcash-lib
 
 ## Documentation
 
-The complete docs are hosted here: [fcore documentation](http://www.fcash.cash/guide/). There's also a [fcore API reference](http://www.fcash.cash/api/) available generated from the JSDocs of the project, where you'll find low-level details on each fcore utility.
+The complete docs are hosted here: [fcash-base documentation](http://www.fcash.cash/guide/). There's also a [fcash-base API reference](http://www.fcash.cash/api/) available generated from the JSDocs of the project, where you'll find low-level details on each fcash-base utility.
 
 - [Read the Developer Guide](http://www.fcash.cash/guide/)
 - [Read the API Reference](http://www.fcash.cash/api/)
@@ -32,15 +32,15 @@ To get community assistance and ask for help with implementation questions, plea
 
 ## Examples
 
-* [Generate a random address](https://github.com/fcash-project/fcash-lib/blob/master/docs/examples.md#generate-a-random-address)
-* [Generate a address from a SHA256 hash](https://github.com/fcash-project/fcash-lib/blob/master/docs/examples.md#generate-a-address-from-a-sha256-hash)
-* [Import an address via WIF](https://github.com/fcash-project/fcash-lib/blob/master/docs/examples.md#import-an-address-via-wif)
-* [Create a Transaction](https://github.com/fcash-project/fcash-lib/blob/master/docs/examples.md#create-a-transaction)
-* [Sign a Fcash message](https://github.com/fcash-project/fcash-lib/blob/master/docs/examples.md#sign-a-bitcoin-message)
-* [Verify a Fcash message](https://github.com/fcash-project/fcash-lib/blob/master/docs/examples.md#verify-a-bitcoin-message)
-* [Create an OP RETURN transaction](https://github.com/fcash-project/fcash-lib/blob/master/docs/examples.md#create-an-op-return-transaction)
-* [Create a 2-of-3 multisig P2SH address](https://github.com/fcash-project/fcash-lib/blob/master/docs/examples.md#create-a-2-of-3-multisig-p2sh-address)
-* [Spend from a 2-of-2 multisig P2SH address](https://github.com/fcash-project/fcash-lib/blob/master/docs/examples.md#spend-from-a-2-of-2-multisig-p2sh-address)
+* [Generate a random address](https://github.com/fcash-js/fcash-lib/blob/master/docs/examples.md#generate-a-random-address)
+* [Generate a address from a SHA256 hash](https://github.com/fcash-js/fcash-lib/blob/master/docs/examples.md#generate-a-address-from-a-sha256-hash)
+* [Import an address via WIF](https://github.com/fcash-js/fcash-lib/blob/master/docs/examples.md#import-an-address-via-wif)
+* [Create a Transaction](https://github.com/fcash-js/fcash-lib/blob/master/docs/examples.md#create-a-transaction)
+* [Sign a Fcash message](https://github.com/fcash-js/fcash-lib/blob/master/docs/examples.md#sign-a-bitcoin-message)
+* [Verify a Fcash message](https://github.com/fcash-js/fcash-lib/blob/master/docs/examples.md#verify-a-bitcoin-message)
+* [Create an OP RETURN transaction](https://github.com/fcash-js/fcash-lib/blob/master/docs/examples.md#create-an-op-return-transaction)
+* [Create a 2-of-3 multisig P2SH address](https://github.com/fcash-js/fcash-lib/blob/master/docs/examples.md#create-a-2-of-3-multisig-p2sh-address)
+* [Spend from a 2-of-2 multisig P2SH address](https://github.com/fcash-js/fcash-lib/blob/master/docs/examples.md#spend-from-a-2-of-2-multisig-p2sh-address)
 
 
 ## Security
@@ -51,7 +51,7 @@ If you find a security issue, please email security@fcash.cash.
 
 ## Contributing
 
-Please send pull requests for bug fixes, code optimization, and ideas for improvement. For more information on how to contribute, please refer to our [CONTRIBUTING](https://github.com/fcash-project/fcash-lib/blob/master/CONTRIBUTING.md) file.
+Please send pull requests for bug fixes, code optimization, and ideas for improvement. For more information on how to contribute, please refer to our [CONTRIBUTING](https://github.com/fcash-js/fcash-lib/blob/master/CONTRIBUTING.md) file.
 
 ## Building the Browser Bundle
 
@@ -63,7 +63,7 @@ gulp browser
 
 This will generate files named `fcash-lib.js` and `fcash-lib.min.js`.
 
-You can also use our pre-generated files, provided for each release along with a PGP signature by one of the project's maintainers. To get them, checkout a release commit (for example, https://github.com/fcash-project/fcash-lib/commit/e33b6e3ba6a1e5830a079e02d949fce69ea33546 for v0.12.6).
+You can also use our pre-generated files, provided for each release along with a PGP signature by one of the project's maintainers. To get them, checkout a release commit (for example, https://github.com/fcash-js/fcash-lib/commit/e33b6e3ba6a1e5830a079e02d949fce69ea33546 for v0.12.6).
 
 To verify signatures, use the following PGP keys:
 - @braydonf: https://pgp.mit.edu/pks/lookup?op=get&search=0x9BBF07CAC07A276D `D909 EFE6 70B5 F6CC 89A3 607A 9BBF 07CA C07A 276D`
@@ -75,7 +75,7 @@ To verify signatures, use the following PGP keys:
 ## Development & Tests
 
 ```sh
-git clone https://github.com/fcash-project/fcash-lib
+git clone https://github.com/fcash-js/fcash-lib
 cd fcash-lib
 npm install
 ```
@@ -91,6 +91,6 @@ or create a test coverage report (you can open `coverage/lcov-report/index.html`
 
 ## License
 
-Code released under [the MIT license](https://github.com/fcash-project/fcash-lib/blob/master/LICENSE).
+Code released under [the MIT license](https://github.com/fcash-js/fcash-lib/blob/master/LICENSE).
 
 Copyright 2013-2017 Fcash, Inc. Fcash is a trademark maintained by Fcash, Inc.

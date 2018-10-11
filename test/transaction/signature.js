@@ -6,12 +6,12 @@ var should = require('chai').should();
 var expect = require('chai').expect;
 var _ = require('lodash');
 
-var fcore = require('../..');
-var Transaction = fcore.Transaction;
-var TransactionSignature = fcore.Transaction.Signature;
-var Script = fcore.Script;
-var PrivateKey = fcore.PrivateKey;
-var errors = fcore.errors;
+var fcashBase = require('../..');
+var Transaction = fcashBase.Transaction;
+var TransactionSignature = fcashBase.Transaction.Signature;
+var Script = fcashBase.Script;
+var PrivateKey = fcashBase.PrivateKey;
+var errors = fcashBase.errors;
 
 describe('TransactionSignature', function() {
 

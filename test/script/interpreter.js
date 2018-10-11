@@ -2,14 +2,14 @@
 
 var should = require('chai').should();
 var sinon = require('sinon');
-var fcore = require('../..');
-var Interpreter = fcore.Script.Interpreter;
-var Transaction = fcore.Transaction;
-var PrivateKey = fcore.PrivateKey;
-var Script = fcore.Script;
-var BN = fcore.crypto.BN;
-var BufferWriter = fcore.encoding.BufferWriter;
-var Opcode = fcore.Opcode;
+var fcashBase = require('../..');
+var Interpreter = fcashBase.Script.Interpreter;
+var Transaction = fcashBase.Transaction;
+var PrivateKey = fcashBase.PrivateKey;
+var Script = fcashBase.Script;
+var BN = fcashBase.crypto.BN;
+var BufferWriter = fcashBase.encoding.BufferWriter;
+var Opcode = fcashBase.Opcode;
 var _ = require('lodash');
 
 var script_valid = require('../data/bitcoind/script_valid');

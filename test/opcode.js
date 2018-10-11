@@ -4,8 +4,8 @@ var _ = require('lodash');
 var chai = require('chai');
 var should = chai.should();
 var expect = chai.expect;
-var fcore = require('..');
-var Opcode = fcore.Opcode;
+var fcashBase = require('..');
+var Opcode = fcashBase.Opcode;
 
 describe('Opcode', function() {
 

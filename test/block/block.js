@@ -1,15 +1,15 @@
 'use strict';
 
-var fcore = require('../..');
+var fcash_base = require('../..');
 var BN = require('../../lib/crypto/bn');
-var BufferReader = fcore.encoding.BufferReader;
-var BufferWriter = fcore.encoding.BufferWriter;
-var BlockHeader = fcore.BlockHeader;
-var Block = fcore.Block;
+var BufferReader = fcash_base.encoding.BufferReader;
+var BufferWriter = fcash_base.encoding.BufferWriter;
+var BlockHeader = fcash_base.BlockHeader;
+var Block = fcash_base.Block;
 var chai = require('chai');
 var fs = require('fs');
 var should = chai.should();
-var Transaction = fcore.Transaction;
+var Transaction = fcash_base.Transaction;
 
 // https://test-insight.fcash.cash/block/000000000b99b16390660d79fcc138d2ad0c89a0d044c4201a02bdf1f61ffa11
 var dataRawBlockBuffer = fs.readFileSync('test/data/blk86756-testnet.dat');

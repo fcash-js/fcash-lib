@@ -6,7 +6,7 @@
   "authors": ["Fcash, Inc."],
   "description": "A pure, powerful core for your bitcoin project.",
   "moduleType": ["globals"],
-  "keywords": ["bitcoin", "fcore", "btc", "satoshi"],
+  "keywords": ["bitcoin", "fcash-base", "btc", "satoshi"],
   "license": "MIT",
   "ignore": [
     "**/.*",

@@ -2,8 +2,8 @@
 
 var expect = require('chai').expect;
 var should = require('chai').should();
-var fcore = require('..');
-var networks = fcore.Networks;
+var fcashBase = require('..');
+var networks = fcashBase.Networks;
 
 describe('Networks', function() {
 

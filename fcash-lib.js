@@ -3190,22 +3190,22 @@ var traverseRoot = function(parent, errorsDefinition) {
 };
 
 
-var fcore = {};
-fcore.Error = function() {
+var fcash_base = {};
+fcash_base.Error = function() {
   this.message = 'Internal error';
   this.stack = this.message + '\n' + (new Error()).stack;
 };
-fcore.Error.prototype = Object.create(Error.prototype);
-fcore.Error.prototype.name = 'fcore.Error';
+fcash_base.Error.prototype = Object.create(Error.prototype);
+fcash_base.Error.prototype.name = 'fcash_base.Error';
 
 
 var data = require('./spec');
-traverseRoot(fcore.Error, data);
+traverseRoot(fcash_base.Error, data);
 
-module.exports = fcore.Error;
+module.exports = fcash_base.Error;
 
 module.exports.extend = function(spec) {
-  return traverseNode(fcore.Error, spec);
+  return traverseNode(fcash_base.Error, spec);
 };
 
 },{"./spec":18,"lodash":319}],18:[function(require,module,exports){
@@ -4060,9 +4060,9 @@ var Network = require('./networks');
 var Point = require('./crypto/point');
 var PublicKey = require('./publickey');
 
-var fcoreErrors = require('./errors');
-var errors = fcoreErrors;
-var hdErrors = fcoreErrors.HDPublicKey;
+var fcash_baseErrors = require('./errors');
+var errors = fcash_baseErrors;
+var hdErrors = fcash_baseErrors.HDPublicKey;
 var assert = require('assert');
 
 var JSUtil = require('./util/js');
@@ -9624,7 +9624,7 @@ Transaction.prototype.invalidSatoshis = function() {
  * broadcast this transaction.
  *
  * @param {Object} opts allows to skip certain tests. {@see Transaction#serialize}
- * @return {fcore.Error}
+ * @return {fcash_base.Error}
  */
 Transaction.prototype.getSerializationError = function(opts) {
   opts = opts || {};
@@ -9934,7 +9934,7 @@ Transaction.prototype._newTransaction = function() {
  * to add an input, for more control, use @{link Transaction#addInput}.
  *
  * Can receive, as output information, the output of bitcoind's `listunspent` command,
- * and a slightly fancier format recognized by fcore:
+ * and a slightly fancier format recognized by fcash_base:
  *
  * ```
  * {
@@ -9945,8 +9945,8 @@ Transaction.prototype._newTransaction = function() {
  *  satoshis: 1020000
  * }
  * ```
- * Where `address` can be either a string or a fcore Address object. The
- * same is true for `script`, which can be a string or a fcore Script.
+ * Where `address` can be either a string or a fcash_base Address object. The
+ * same is true for `script`, which can be a string or a fcash_base Script.
  *
  * Beware that this resets all the signatures for inputs (in further versions,
  * SIGHASH_SINGLE or SIGHASH_NONE signatures will not be reset).
@@ -54049,7 +54049,7 @@ module.exports={
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/fcash-project/fcash-lib.git"
+    "url": "https://github.com/fcash-js/fcash-lib.git"
   },
   "browser": {
     "request": "browser-request"
@@ -54063,7 +54063,7 @@ module.exports={
     "lodash": "=4.17.4"
   },
   "devDependencies": {
-    "fcash-build": "https://github.com/fcash-project/fcash-build.git#d4e8b2b2f1e2c065c3a807dcb6a6250f61d67ab3",
+    "fcash-build": "https://github.com/fcash-js/fcash-build.git#d4e8b2b2f1e2c065c3a807dcb6a6250f61d67ab3",
     "brfs": "^1.2.0",
     "chai": "^1.10.0",
     "gulp": "^3.8.10",
@@ -54076,11 +54076,11 @@ module.exports={
 (function (global,Buffer){
 'use strict';
 
-var fcore = module.exports;
+var fcash_base = module.exports;
 
 // module information
-fcore.version = 'v' + require('./package.json').version;
-fcore.versionGuard = function(version) {
+fcash_base.version = 'v' + require('./package.json').version;
+fcash_base.versionGuard = function(version) {
   if (version !== undefined) {
     var message = 'More than one instance of fcash-lib found. ' +
       'Please make sure to require fcash-lib and check that submodules do' +
@@ -54088,61 +54088,61 @@ fcore.versionGuard = function(version) {
     throw new Error(message);
   }
 };
-fcore.versionGuard(global._fcore);
-global._fcore = fcore.version;
+fcash_base.versionGuard(global._fcash_base);
+global._fcash_base = fcash_base.version;
 
 // crypto
-fcore.crypto = {};
-fcore.crypto.BN = require('./lib/crypto/bn');
-fcore.crypto.ECDSA = require('./lib/crypto/ecdsa');
-fcore.crypto.Hash = require('./lib/crypto/hash');
-fcore.crypto.Random = require('./lib/crypto/random');
-fcore.crypto.Point = require('./lib/crypto/point');
-fcore.crypto.Signature = require('./lib/crypto/signature');
+fcash_base.crypto = {};
+fcash_base.crypto.BN = require('./lib/crypto/bn');
+fcash_base.crypto.ECDSA = require('./lib/crypto/ecdsa');
+fcash_base.crypto.Hash = require('./lib/crypto/hash');
+fcash_base.crypto.Random = require('./lib/crypto/random');
+fcash_base.crypto.Point = require('./lib/crypto/point');
+fcash_base.crypto.Signature = require('./lib/crypto/signature');
 
 // encoding
-fcore.encoding = {};
-fcore.encoding.Base58 = require('./lib/encoding/base58');
-fcore.encoding.Base58Check = require('./lib/encoding/base58check');
-fcore.encoding.BufferReader = require('./lib/encoding/bufferreader');
-fcore.encoding.BufferWriter = require('./lib/encoding/bufferwriter');
-fcore.encoding.Varint = require('./lib/encoding/varint');
+fcash_base.encoding = {};
+fcash_base.encoding.Base58 = require('./lib/encoding/base58');
+fcash_base.encoding.Base58Check = require('./lib/encoding/base58check');
+fcash_base.encoding.BufferReader = require('./lib/encoding/bufferreader');
+fcash_base.encoding.BufferWriter = require('./lib/encoding/bufferwriter');
+fcash_base.encoding.Varint = require('./lib/encoding/varint');
 
 // utilities
-fcore.util = {};
-fcore.util.buffer = require('./lib/util/buffer');
-fcore.util.js = require('./lib/util/js');
-fcore.util.preconditions = require('./lib/util/preconditions');
+fcash_base.util = {};
+fcash_base.util.buffer = require('./lib/util/buffer');
+fcash_base.util.js = require('./lib/util/js');
+fcash_base.util.preconditions = require('./lib/util/preconditions');
 
 // errors thrown by the library
-fcore.errors = require('./lib/errors');
+fcash_base.errors = require('./lib/errors');
 
 // main bitcoin library
-fcore.Address = require('./lib/address');
-fcore.Block = require('./lib/block');
-fcore.MerkleBlock = require('./lib/block/merkleblock');
-fcore.BlockHeader = require('./lib/block/blockheader');
-fcore.HDPrivateKey = require('./lib/hdprivatekey.js');
-fcore.HDPublicKey = require('./lib/hdpublickey.js');
-fcore.Networks = require('./lib/networks');
-fcore.Opcode = require('./lib/opcode');
-fcore.PrivateKey = require('./lib/privatekey');
-fcore.PublicKey = require('./lib/publickey');
-fcore.Script = require('./lib/script');
-fcore.Transaction = require('./lib/transaction');
-fcore.URI = require('./lib/uri');
-fcore.Unit = require('./lib/unit');
+fcash_base.Address = require('./lib/address');
+fcash_base.Block = require('./lib/block');
+fcash_base.MerkleBlock = require('./lib/block/merkleblock');
+fcash_base.BlockHeader = require('./lib/block/blockheader');
+fcash_base.HDPrivateKey = require('./lib/hdprivatekey.js');
+fcash_base.HDPublicKey = require('./lib/hdpublickey.js');
+fcash_base.Networks = require('./lib/networks');
+fcash_base.Opcode = require('./lib/opcode');
+fcash_base.PrivateKey = require('./lib/privatekey');
+fcash_base.PublicKey = require('./lib/publickey');
+fcash_base.Script = require('./lib/script');
+fcash_base.Transaction = require('./lib/transaction');
+fcash_base.URI = require('./lib/uri');
+fcash_base.Unit = require('./lib/unit');
 
 // dependencies, subject to change
-fcore.deps = {};
-fcore.deps.bnjs = require('bn.js');
-fcore.deps.bs58 = require('bs58');
-fcore.deps.Buffer = Buffer;
-fcore.deps.elliptic = require('elliptic');
-fcore.deps._ = require('lodash');
+fcash_base.deps = {};
+fcash_base.deps.bnjs = require('bn.js');
+fcash_base.deps.bs58 = require('bs58');
+fcash_base.deps.Buffer = Buffer;
+fcash_base.deps.elliptic = require('elliptic');
+fcash_base.deps._ = require('lodash');
 
 // Internal usage, exposed for testing/advanced tweaking
-fcore.Transaction.sighash = require('./lib/transaction/sighash');
+fcash_base.Transaction.sighash = require('./lib/transaction/sighash');
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer)
 },{"./lib/address":1,"./lib/block":4,"./lib/block/blockheader":3,"./lib/block/merkleblock":5,"./lib/crypto/bn":6,"./lib/crypto/ecdsa":7,"./lib/crypto/hash":8,"./lib/crypto/point":9,"./lib/crypto/random":10,"./lib/crypto/signature":11,"./lib/encoding/base58":12,"./lib/encoding/base58check":13,"./lib/encoding/bufferreader":14,"./lib/encoding/bufferwriter":15,"./lib/encoding/varint":16,"./lib/errors":17,"./lib/hdprivatekey.js":19,"./lib/hdpublickey.js":20,"./lib/networks":21,"./lib/opcode":22,"./lib/privatekey":23,"./lib/publickey":24,"./lib/script":25,"./lib/transaction":28,"./lib/transaction/sighash":36,"./lib/unit":40,"./lib/uri":41,"./lib/util/buffer":42,"./lib/util/js":43,"./lib/util/preconditions":44,"./package.json":320,"bn.js":280,"bs58":281,"buffer":47,"elliptic":285,"lodash":319}]},{},[]);

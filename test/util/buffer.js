@@ -4,9 +4,9 @@
 var should = require('chai').should();
 var expect = require('chai').expect;
 
-var fcore = require('../..');
-var errors = fcore.errors;
-var BufferUtil = fcore.util.buffer;
+var fcashBase = require('../..');
+var errors = fcashBase.errors;
+var BufferUtil = fcashBase.util.buffer;
 
 describe('buffer utils', function() {
 

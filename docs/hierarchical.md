@@ -10,8 +10,8 @@ An instance of a [PrivateKey](privatekey.md) that also contains information requ
 Sample usage:
 
 ```javascript
-var fcore = require('fcore');
-var HDPrivateKey = fcore.HDPrivateKey;
+var fcash-base = require('fcash-base');
+var HDPrivateKey = fcash-base.HDPrivateKey;
 
 var hdPrivateKey = new HDPrivateKey();
 var retrieved = new HDPrivateKey('xpriv...');

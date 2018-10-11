@@ -1,7 +1,7 @@
 'use strict';
 
-var fcore = require('../..');
-var Random = fcore.crypto.Random;
+var fcash_base = require('../..');
+var Random = fcash_base.crypto.Random;
 
 describe('Random', function() {
 

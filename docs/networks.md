@@ -9,14 +9,14 @@ The regtest network is useful for development as it's possible to programmatical
 
 ```js
 // Standard testnet
-> fcore.Networks.testnet.networkMagic;
+> fcash-base.Networks.testnet.networkMagic;
 <Buffer 0b 11 09 07>
 ```
 
 ```js
 // Enabling testnet to use the regtest port and magicNumber
-> fcore.Networks.enableRegtest();
-> fcore.Networks.testnet.networkMagic;
+> fcash-base.Networks.enableRegtest();
+> fcash-base.Networks.testnet.networkMagic;
 <Buffer fa bf b5 da>
 ```
 
@@ -26,7 +26,7 @@ Most projects will only need to work with one of the networks. The value of `Net
 ## Network constants
 The functionality of testnet and livenet is mostly similar (except for some relaxed block validation rules on testnet). They differ in the constants being used for human representation of base58 encoded strings. These are sometimes referred to as "version" constants.
 
-Take a look at this modified snippet from [networks.js](https://github.com/fcash-project/fcore/blob/master/lib/networks.js)
+Take a look at this modified snippet from [networks.js](https://github.com/fcash-js/fcash-base/blob/master/lib/networks.js)
 
 ```javascript
 var livenet = new Network();

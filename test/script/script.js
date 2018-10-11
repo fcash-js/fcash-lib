@@ -2,14 +2,14 @@
 
 var should = require('chai').should();
 var expect = require('chai').expect;
-var fcore = require('../..');
+var fcashBase = require('../..');
 
-var BufferUtil = fcore.util.buffer;
-var Script = fcore.Script;
-var Networks = fcore.Networks;
-var Opcode = fcore.Opcode;
-var PublicKey = fcore.PublicKey;
-var Address = fcore.Address;
+var BufferUtil = fcashBase.util.buffer;
+var Script = fcashBase.Script;
+var Networks = fcashBase.Networks;
+var Opcode = fcashBase.Opcode;
+var PublicKey = fcashBase.PublicKey;
+var Address = fcashBase.Address;
 
 describe('Script', function() {
 
@@ -294,7 +294,7 @@ describe('Script', function() {
       // from txid: 5c85ed63469aa9971b5d01063dbb8bcdafd412b2f51a3d24abf2e310c028bbf8
       // and input index: 5
       var scriptBuffer = new Buffer('483045022050eb59c79435c051f45003d9f82865c8e4df5699d7722e77113ef8cadbd92109022100d4ab233e070070eb8e0e62e3d2d2eb9474a5bf135c9eda32755acb0875a6c20601', 'hex');
-      var script = fcore.Script.fromBuffer(scriptBuffer);
+      var script = fcashBase.Script.fromBuffer(scriptBuffer);
       script.isPublicKeyIn().should.equal(true);
     });
   });
@@ -754,8 +754,8 @@ describe('Script', function() {
 
   describe('#buildWitnessMultisigOutFromScript', function() {
     it('it will build nested witness scriptSig', function() {
-      var redeemScript = fcore.Script();
-      var redeemHash = fcore.crypto.Hash.sha256(redeemScript.toBuffer());
+      var redeemScript = fcashBase.Script();
+      var redeemHash = fcashBase.crypto.Hash.sha256(redeemScript.toBuffer());
       var s = Script.buildWitnessMultisigOutFromScript(redeemScript);
       var buf = s.toBuffer();
       buf[0].should.equal(0);
@@ -1061,7 +1061,7 @@ describe('Script', function() {
     });
     it('should handle P2SH-multisig-in scripts from utility', function() {
       // create a well-formed signature, does not need to match pubkeys
-      var signature = fcore.crypto.Signature.fromString('30060201FF0201FF');
+      var signature = fcashBase.crypto.Signature.fromString('30060201FF0201FF');
       var signatures = [ signature.toBuffer() ];
       var p2sh = Script.buildP2SHMultisigIn(pubKeyHexes, 1, signatures, {});
       p2sh.getSignatureOperationsCount(true).should.equal(0);

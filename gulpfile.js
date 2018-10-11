@@ -1,5 +1,5 @@
 
 
-var fcoreTasks = require('fcash-build');
+var fcash_baseTasks = require('fcash-build');
 
-fcoreTasks('lib');
+fcash_baseTasks('lib');

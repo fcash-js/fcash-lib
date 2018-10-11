@@ -1,10 +1,10 @@
 'use strict';
 
-var fcore = require('../..');
+var fcash_base = require('../..');
 var should = require('chai').should();
-var BufferWriter = fcore.encoding.BufferWriter;
-var BufferReader = fcore.encoding.BufferReader;
-var BN = fcore.crypto.BN;
+var BufferWriter = fcash_base.encoding.BufferWriter;
+var BufferReader = fcash_base.encoding.BufferReader;
+var BN = fcash_base.crypto.BN;
 
 describe('BufferWriter', function() {
 

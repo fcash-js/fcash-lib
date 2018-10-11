@@ -1,9 +1,9 @@
 'use strict';
 
 var should = require('chai').should();
-var fcore = require('../..');
-var Base58Check = fcore.encoding.Base58Check;
-var Base58 = fcore.encoding.Base58;
+var fcash_base = require('../..');
+var Base58Check = fcash_base.encoding.Base58Check;
+var Base58 = fcash_base.encoding.Base58;
 
 describe('Base58Check', function() {
   var buf = new Buffer([0, 1, 2, 3, 253, 254, 255]);
