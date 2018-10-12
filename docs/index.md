@@ -37,7 +37,7 @@ Some functionality is implemented as a module that can be installed separately:
 
 * [Payment Protocol Support](https://github.com/fcash-js/fcash-payment-protocol)
 * [Peer to Peer Networking](https://github.com/fcash-js/fcash-p2p)
-* [Fcash Core JSON-RPC](https://github.com/fcash-js/bitcoind-rpc)
+* [Fcash Core JSON-RPC](https://github.com/fcash-js/fcashd-rpc)
 * [Payment Channels](https://github.com/fcash-js/fcash-channel)
 * [Mnemonics](https://github.com/fcash-js/fcash-mnemonic)
 * [Elliptical Curve Integrated Encryption Scheme](https://github.com/fcash-js/fcash-ecies)
