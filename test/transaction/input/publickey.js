@@ -1,9 +1,9 @@
 'use strict';
 
 var should = require('chai').should();
-var fcashBase = require('../../..');
-var Transaction = fcashBase.Transaction;
-var PrivateKey = fcashBase.PrivateKey;
+var bitcore = require('../../..');
+var Transaction = bitcore.Transaction;
+var PrivateKey = bitcore.PrivateKey;
 
 describe('PublicKeyInput', function() {
 

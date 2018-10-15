@@ -6,11 +6,11 @@ var chai = require('chai');
 var should = chai.should();
 var expect = chai.expect;
 
-var fcash_base = require('..');
-var PublicKey = fcash_base.PublicKey;
-var Address = fcash_base.Address;
-var Script = fcash_base.Script;
-var Networks = fcash_base.Networks;
+var bitcore = require('..');
+var PublicKey = bitcore.PublicKey;
+var Address = bitcore.Address;
+var Script = bitcore.Script;
+var Networks = bitcore.Networks;
 
 var validbase58 = require('./data/bitcoind/base58_keys_valid.json');
 var invalidbase58 = require('./data/bitcoind/base58_keys_invalid.json');
@@ -259,7 +259,7 @@ describe('Address', function() {
     it('should error because of unrecognized data format', function() {
       (function() {
         return new Address(new Error());
-      }).should.throw(fcash_base.errors.InvalidArgument);
+      }).should.throw(bitcore.errors.InvalidArgument);
     });
 
     it('should error because of incorrect format for pubkey hash', function() {
@@ -462,7 +462,7 @@ describe('Address', function() {
     it('will fail with invalid state', function() {
       expect(function() {
         return Address.fromObject('¹');
-      }).to.throw(fcash_base.errors.InvalidState);
+      }).to.throw(bitcore.errors.InvalidState);
     });
   });
 
@@ -549,11 +549,6 @@ describe('Address', function() {
     it('works on testnet also', function() {
       var address = Address.createMultisig(publics, 2, Networks.testnet);
       address.toString().should.equal('2N7T3TAetJrSCruQ39aNrJvYLhG1LJosujf');
-    });
-
-    it('can create an address from a set of public keys with a nested witness program', function() {
-      var address = Address.createMultisig(publics, 2, Networks.livenet, true);
-      address.toString().should.equal('3PpK1bBqUmPK3Q6QPSUK7BQSZ1DMWL6aes');
     });
 
     it('can also be created by Address.createMultisig', function() {

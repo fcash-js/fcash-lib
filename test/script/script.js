@@ -2,14 +2,14 @@
 
 var should = require('chai').should();
 var expect = require('chai').expect;
-var fcashBase = require('../..');
+var bitcore = require('../..');
 
-var BufferUtil = fcashBase.util.buffer;
-var Script = fcashBase.Script;
-var Networks = fcashBase.Networks;
-var Opcode = fcashBase.Opcode;
-var PublicKey = fcashBase.PublicKey;
-var Address = fcashBase.Address;
+var BufferUtil = bitcore.util.buffer;
+var Script = bitcore.Script;
+var Networks = bitcore.Networks;
+var Opcode = bitcore.Opcode;
+var PublicKey = bitcore.PublicKey;
+var Address = bitcore.Address;
 
 describe('Script', function() {
 
@@ -294,7 +294,7 @@ describe('Script', function() {
       // from txid: 5c85ed63469aa9971b5d01063dbb8bcdafd412b2f51a3d24abf2e310c028bbf8
       // and input index: 5
       var scriptBuffer = new Buffer('483045022050eb59c79435c051f45003d9f82865c8e4df5699d7722e77113ef8cadbd92109022100d4ab233e070070eb8e0e62e3d2d2eb9474a5bf135c9eda32755acb0875a6c20601', 'hex');
-      var script = fcashBase.Script.fromBuffer(scriptBuffer);
+      var script = bitcore.Script.fromBuffer(scriptBuffer);
       script.isPublicKeyIn().should.equal(true);
     });
   });
@@ -440,60 +440,6 @@ describe('Script', function() {
       Script('OP_HASH160 21 0x000000000000000000000000000000000000000000 OP_EQUAL').isScriptHashOut().should.equal(false);
     });
 
-  });
-
-  describe('#isWitnessScriptHashOut', function() {
-    it('should recognize this script as p2wsh', function() {
-      Script('OP_0 32 0xa99d08fbec6958f4d4a3776c3728ec448934d25fe1142054b8b68bac866dfc3a')
-        .isWitnessScriptHashOut().should.equal(true);
-      Script('0020a99d08fbec6958f4d4a3776c3728ec448934d25fe1142054b8b68bac866dfc3a')
-        .isWitnessScriptHashOut().should.equal(true);
-    });
-    it('should NOT identify as p2wsh', function() {
-      Script('OP_0 20 0x799d283e7f92af1dd242bf4eea513c6efd117de2')
-        .isWitnessScriptHashOut().should.equal(false);
-    });
-  });
-
-  describe('#isWitnessPublicKeyHashOut', function() {
-    it('should identify as p2wpkh', function() {
-      Script('OP_0 20 0x799d283e7f92af1dd242bf4eea513c6efd117de2')
-        .isWitnessPublicKeyHashOut().should.equal(true);
-      Script('0014799d283e7f92af1dd242bf4eea513c6efd117de2').isWitnessPublicKeyHashOut().should.equal(true);
-    });
-    it('should NOT identify as p2wpkh', function() {
-      Script('OP_0 32 0xa99d08fbec6958f4d4a3776c3728ec448934d25fe1142054b8b68bac866dfc3a')
-        .isWitnessPublicKeyHashOut().should.equal(false);
-    });
-  });
-
-  describe('#isWitnessProgram', function() {
-    it('will default values to empty object', function() {
-      Script('OP_0 20 0x799d283e7f92af1dd242bf4eea513c6efd117de2')
-        .isWitnessProgram().should.equal(true);
-    });
-    it('will return false if script is data push longer than 40 bytes', function() {
-      Script('OP_0 42 0xd06863c385592423903682926825c495b6cf88fd7cd6159ffd72f778ca475d3046e7b87835d3b457cd')
-        .isWitnessProgram().should.equal(false);
-    });
-    it('will return false if first byte op_code is greater than OP_16', function() {
-      Script('OP_NOP 20 0x799d283e7f92af1dd242bf4eea513c6efd117de2')
-        .isWitnessProgram().should.equal(false);
-    });
-    it('will return true with datapush of 20', function() {
-      var values = {};
-      Script('OP_0 20 0x799d283e7f92af1dd242bf4eea513c6efd117de2')
-        .isWitnessProgram(values).should.equal(true);
-      values.version.should.equal(0);
-      values.program.toString('hex').should.equal('799d283e7f92af1dd242bf4eea513c6efd117de2');
-    });
-    it('will return true with datapush of 32', function() {
-      var values = {};
-      Script('OP_0 32 0xc756f6d660d4aaad55534cac599a0d9bf5c7e8f70363d22926291811a168c620')
-        .isWitnessProgram(values).should.equal(true);
-      values.version.should.equal(0);
-      values.program.toString('hex').should.equal('c756f6d660d4aaad55534cac599a0d9bf5c7e8f70363d22926291811a168c620');
-    });
   });
 
   describe('#isPushOnly', function() {
@@ -751,18 +697,6 @@ describe('Script', function() {
       }
     }
   });
-
-  describe('#buildWitnessMultisigOutFromScript', function() {
-    it('it will build nested witness scriptSig', function() {
-      var redeemScript = fcashBase.Script();
-      var redeemHash = fcashBase.crypto.Hash.sha256(redeemScript.toBuffer());
-      var s = Script.buildWitnessMultisigOutFromScript(redeemScript);
-      var buf = s.toBuffer();
-      buf[0].should.equal(0);
-      buf.slice(2, 34).toString('hex').should.equal(redeemHash.toString('hex'));
-    });
-  });
-
   describe('#buildPublicKeyHashOut', function() {
     it('should create script from livenet address', function() {
       var address = Address.fromString('1NaTVwXDDUJaXDQajoa9MqHhz4uTxtgK14');
@@ -1061,7 +995,7 @@ describe('Script', function() {
     });
     it('should handle P2SH-multisig-in scripts from utility', function() {
       // create a well-formed signature, does not need to match pubkeys
-      var signature = fcashBase.crypto.Signature.fromString('30060201FF0201FF');
+      var signature = bitcore.crypto.Signature.fromString('30060201FF0201FF');
       var signatures = [ signature.toBuffer() ];
       var p2sh = Script.buildP2SHMultisigIn(pubKeyHexes, 1, signatures, {});
       p2sh.getSignatureOperationsCount(true).should.equal(0);

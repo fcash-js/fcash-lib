@@ -4,8 +4,8 @@
 var should = require('chai').should();
 var expect = require('chai').expect;
 
-var fcashBase = require('../..');
-var JSUtil = fcashBase.util.js;
+var bitcore = require('../..');
+var JSUtil = bitcore.util.js;
 
 describe('js utils', function() {
 

@@ -1,8 +1,8 @@
 'use strict';
 
 var should = require('chai').should();
-var fcash_base = require('../..');
-var BN = fcash_base.crypto.BN;
+var bitcore = require('../..');
+var BN = bitcore.crypto.BN;
 
 describe('BN', function() {
   it('should create a bn', function() {

@@ -4,9 +4,9 @@ var buffer = require('buffer');
 
 var chai = require('chai');
 var should = chai.should();
-var fcashBase = require('../../');
-var Script = fcashBase.Script;
-var Transaction = fcashBase.Transaction;
+var bitcore = require('../../');
+var Script = bitcore.Script;
+var Transaction = bitcore.Transaction;
 var sighash = Transaction.sighash;
 
 var vectors_sighash = require('../data/sighash.json');

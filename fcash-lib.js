@@ -462,7 +462,7 @@ Address.prototype.isPayToScriptHash = function() {
 /**
  * Will return a buffer representation of the address
  *
- * @returns {Buffer} Fcash address buffer
+ * @returns {Buffer} Bitcoin address buffer
  */
 Address.prototype.toBuffer = function() {
   var version = new Buffer([this.network[this.type]]);
@@ -484,7 +484,7 @@ Address.prototype.toObject = Address.prototype.toJSON = function toObject() {
 /**
  * Will return a the string representation of the address
  *
- * @returns {string} Fcash address
+ * @returns {string} Bitcoin address
  */
 Address.prototype.toString = function() {
   return Base58Check.encode(this.toBuffer());
@@ -493,7 +493,7 @@ Address.prototype.toString = function() {
 /**
  * Will return a string formatted for the console
  *
- * @returns {string} Fcash address
+ * @returns {string} Bitcoin address
  */
 Address.prototype.inspect = function() {
   return '<Address: ' + this.toString() + ', type: ' + this.type + ', network: ' + this.network + '>';
@@ -1284,7 +1284,7 @@ MerkleBlock.prototype.filterdTxsHash = function filterdTxsHash() {
 
 /**
  * Traverse a the tree in this MerkleBlock, validating it along the way
- * Modeled after Fcash Core merkleblock.cpp TraverseAndExtract()
+ * Modeled after Bitcoin Core merkleblock.cpp TraverseAndExtract()
  * @param {Number} - depth - Current height
  * @param {Number} - pos - Current position in the tree
  * @param {Object} - opts - Object with values that need to be mutated throughout the traversal
@@ -1334,7 +1334,7 @@ MerkleBlock.prototype._traverseMerkleTree = function traverseMerkleTree(depth, p
 };
 
 /** Calculates the width of a merkle tree at a given height.
- *  Modeled after Fcash Core merkleblock.h CalcTreeWidth()
+ *  Modeled after Bitcoin Core merkleblock.h CalcTreeWidth()
  * @param {Number} - Height at which we want the tree width
  * @returns {Number} - Width of the tree at a given height
  * @private
@@ -3190,28 +3190,28 @@ var traverseRoot = function(parent, errorsDefinition) {
 };
 
 
-var fcash_base = {};
-fcash_base.Error = function() {
+var bitcore = {};
+bitcore.Error = function() {
   this.message = 'Internal error';
   this.stack = this.message + '\n' + (new Error()).stack;
 };
-fcash_base.Error.prototype = Object.create(Error.prototype);
-fcash_base.Error.prototype.name = 'fcash_base.Error';
+bitcore.Error.prototype = Object.create(Error.prototype);
+bitcore.Error.prototype.name = 'bitcore.Error';
 
 
 var data = require('./spec');
-traverseRoot(fcash_base.Error, data);
+traverseRoot(bitcore.Error, data);
 
-module.exports = fcash_base.Error;
+module.exports = bitcore.Error;
 
 module.exports.extend = function(spec) {
-  return traverseNode(fcash_base.Error, spec);
+  return traverseNode(bitcore.Error, spec);
 };
 
 },{"./spec":18,"lodash":319}],18:[function(require,module,exports){
 'use strict';
 
-var docsURL = 'http://www.fcash.cash/';
+var docsURL = 'http://bitcore.io/';
 
 module.exports = [{
   name: 'InvalidB58Char',
@@ -3815,7 +3815,7 @@ HDPrivateKey.fromSeed = function(hexa, network) {
   if (hexa.length > MAXIMUM_ENTROPY_BITS * BITS_TO_BYTES) {
     throw new hdErrors.InvalidEntropyArgument.TooMuchEntropy(hexa);
   }
-  var hash = Hash.sha512hmac(hexa, new buffer.Buffer('Fcash seed'));
+  var hash = Hash.sha512hmac(hexa, new buffer.Buffer('Bitcoin seed'));
 
   return new HDPrivateKey({
     network: Network.get(network) || Network.defaultNetwork,
@@ -4060,9 +4060,9 @@ var Network = require('./networks');
 var Point = require('./crypto/point');
 var PublicKey = require('./publickey');
 
-var fcash_baseErrors = require('./errors');
-var errors = fcash_baseErrors;
-var hdErrors = fcash_baseErrors.HDPublicKey;
+var bitcoreErrors = require('./errors');
+var errors = bitcoreErrors;
+var hdErrors = bitcoreErrors.HDPublicKey;
 var assert = require('assert');
 
 var JSUtil = require('./util/js');
@@ -4676,20 +4676,18 @@ function removeNetwork(network) {
 addNetwork({
   name: 'livenet',
   alias: 'mainnet',
-  pubkeyhash: 0x00,
+  pubkeyhash: 0x87,
   privatekey: 0x80,
   scripthash: 0x05,
   xpubkey: 0x0488b21e,
   xprivkey: 0x0488ade4,
   networkMagic: 0xf9beb4d9,
-  port: 8333,
+  port: 8666,
   dnsSeeds: [
-    'seed.bitcoin.sipa.be',
-    'dnsseed.bluematt.me',
-    'dnsseed.bitcoin.dashjr.org',
-    'seed.bitcoinstats.com',
-    'seed.bitnodes.io',
-    'bitseed.xf2.org'
+    'wifidog.kunteng.org',
+    'seeds.wificoin.talkblock.org',
+    'wfc.wificoin.club',
+    'emqtt.kunteng.org'
   ]
 });
 
@@ -5887,7 +5885,7 @@ var Signature = require('../crypto/signature');
 var PublicKey = require('../publickey');
 
 /**
- * Fcash transactions contain scripts. Each input has a script called the
+ * Bitcoin transactions contain scripts. Each input has a script called the
  * scriptSig, and each output has a script called the scriptPubkey. To validate
  * an input, the input's script is concatenated with the referenced output script,
  * and the result is executed. If at the end of execution the stack contains a
@@ -9603,7 +9601,7 @@ Transaction.prototype.checkedSerialize = function(opts) {
   var serializationError = this.getSerializationError(opts);
   if (serializationError) {
     serializationError.message += ' - For more information please see: ' +
-      'https://www.fcash.cash/api/lib/transaction#serialization-checks';
+      'https://bitcore.io/api/lib/transaction#serialization-checks';
     throw serializationError;
   }
   return this.uncheckedSerialize();
@@ -9624,7 +9622,7 @@ Transaction.prototype.invalidSatoshis = function() {
  * broadcast this transaction.
  *
  * @param {Object} opts allows to skip certain tests. {@see Transaction#serialize}
- * @return {fcash_base.Error}
+ * @return {bitcore.Error}
  */
 Transaction.prototype.getSerializationError = function(opts) {
   opts = opts || {};
@@ -9934,7 +9932,7 @@ Transaction.prototype._newTransaction = function() {
  * to add an input, for more control, use @{link Transaction#addInput}.
  *
  * Can receive, as output information, the output of bitcoind's `listunspent` command,
- * and a slightly fancier format recognized by fcash_base:
+ * and a slightly fancier format recognized by bitcore:
  *
  * ```
  * {
@@ -9945,8 +9943,8 @@ Transaction.prototype._newTransaction = function() {
  *  satoshis: 1020000
  * }
  * ```
- * Where `address` can be either a string or a fcash_base Address object. The
- * same is true for `script`, which can be a string or a fcash_base Script.
+ * Where `address` can be either a string or a bitcore Address object. The
+ * same is true for `script`, which can be a string or a bitcore Script.
  *
  * Beware that this resets all the signatures for inputs (in further versions,
  * SIGHASH_SINGLE or SIGHASH_NONE signatures will not be reset).
@@ -11019,7 +11017,7 @@ var Address = require('./address');
 var Unit = require('./unit');
 
 /**
- * Fcash URI
+ * Bitcore URI
  *
  * Instantiate an URI from a bitcoin URI String or an Object. An URI instance
  * can be created with a bitcoin uri string or an object. All instances of
@@ -11198,7 +11196,7 @@ URI.prototype.toObject = URI.prototype.toJSON = function toObject() {
 /**
  * Will return a the string representation of the URI
  *
- * @returns {string} Fcash URI string
+ * @returns {string} Bitcoin URI string
  */
 URI.prototype.toString = function() {
   var query = {};
@@ -11226,7 +11224,7 @@ URI.prototype.toString = function() {
 /**
  * Will return a string formatted for the console
  *
- * @returns {string} Fcash URI
+ * @returns {string} Bitcoin URI
  */
 URI.prototype.inspect = function() {
   return '<URI: ' + this.toString() + '>';
@@ -31475,11 +31473,11 @@ module.exports = basex(ALPHABET)
 },{"base-x":282}],282:[function(require,module,exports){
 // base-x encoding
 // Forked from https://github.com/cryptocoinjs/bs58
-// Originally written by Mike Hearn for FcashJ
+// Originally written by Mike Hearn for BitcoinJ
 // Copyright (c) 2011 Google Inc
 // Ported to JavaScript by Stefan Thomas
 // Merged Buffer refactorings from base58-native by Stephen Pair
-// Copyright (c) 2013 Fcash Inc
+// Copyright (c) 2013 BitPay Inc
 
 var Buffer = require('safe-buffer').Buffer
 
@@ -54020,10 +54018,10 @@ arguments[4][262][0].apply(exports,arguments)
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{}],320:[function(require,module,exports){
 module.exports={
-  "name": "fcash-lib",
+  "name": "wificoin-lib",
   "version": "0.15.0",
-  "description": "A pure and powerful JavaScript Fcash library.",
-  "author": "Fcash <dev@fcash.cash>",
+  "description": "A pure and powerful JavaScript Bitcoin library.",
+  "author": "BitPay <dev@bitpay.com>",
   "main": "index.js",
   "scripts": {
     "lint": "gulp lint",
@@ -54049,7 +54047,7 @@ module.exports={
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/fcash-js/fcash-lib.git"
+    "url": "https://github.com/wificoin-project/wificoin-lib.git"
   },
   "browser": {
     "request": "browser-request"
@@ -54063,7 +54061,7 @@ module.exports={
     "lodash": "=4.17.4"
   },
   "devDependencies": {
-    "fcash-build": "https://github.com/fcash-js/fcash-build.git#d4e8b2b2f1e2c065c3a807dcb6a6250f61d67ab3",
+    "bitcore-build": "https://github.com/bitpay/bitcore-build.git#d4e8b2b2f1e2c065c3a807dcb6a6250f61d67ab3",
     "brfs": "^1.2.0",
     "chai": "^1.10.0",
     "gulp": "^3.8.10",
@@ -54072,77 +54070,77 @@ module.exports={
   "license": "MIT"
 }
 
-},{}],"fcash-lib":[function(require,module,exports){
+},{}],"bitcore-lib":[function(require,module,exports){
 (function (global,Buffer){
 'use strict';
 
-var fcash_base = module.exports;
+var bitcore = module.exports;
 
 // module information
-fcash_base.version = 'v' + require('./package.json').version;
-fcash_base.versionGuard = function(version) {
+bitcore.version = 'v' + require('./package.json').version;
+bitcore.versionGuard = function(version) {
   if (version !== undefined) {
-    var message = 'More than one instance of fcash-lib found. ' +
-      'Please make sure to require fcash-lib and check that submodules do' +
-      ' not also include their own fcash-lib dependency.';
+    var message = 'More than one instance of bitcore-lib found. ' +
+      'Please make sure to require bitcore-lib and check that submodules do' +
+      ' not also include their own bitcore-lib dependency.';
     throw new Error(message);
   }
 };
-fcash_base.versionGuard(global._fcash_base);
-global._fcash_base = fcash_base.version;
+//bitcore.versionGuard(global._bitcore);
+global._bitcore = bitcore.version;
 
 // crypto
-fcash_base.crypto = {};
-fcash_base.crypto.BN = require('./lib/crypto/bn');
-fcash_base.crypto.ECDSA = require('./lib/crypto/ecdsa');
-fcash_base.crypto.Hash = require('./lib/crypto/hash');
-fcash_base.crypto.Random = require('./lib/crypto/random');
-fcash_base.crypto.Point = require('./lib/crypto/point');
-fcash_base.crypto.Signature = require('./lib/crypto/signature');
+bitcore.crypto = {};
+bitcore.crypto.BN = require('./lib/crypto/bn');
+bitcore.crypto.ECDSA = require('./lib/crypto/ecdsa');
+bitcore.crypto.Hash = require('./lib/crypto/hash');
+bitcore.crypto.Random = require('./lib/crypto/random');
+bitcore.crypto.Point = require('./lib/crypto/point');
+bitcore.crypto.Signature = require('./lib/crypto/signature');
 
 // encoding
-fcash_base.encoding = {};
-fcash_base.encoding.Base58 = require('./lib/encoding/base58');
-fcash_base.encoding.Base58Check = require('./lib/encoding/base58check');
-fcash_base.encoding.BufferReader = require('./lib/encoding/bufferreader');
-fcash_base.encoding.BufferWriter = require('./lib/encoding/bufferwriter');
-fcash_base.encoding.Varint = require('./lib/encoding/varint');
+bitcore.encoding = {};
+bitcore.encoding.Base58 = require('./lib/encoding/base58');
+bitcore.encoding.Base58Check = require('./lib/encoding/base58check');
+bitcore.encoding.BufferReader = require('./lib/encoding/bufferreader');
+bitcore.encoding.BufferWriter = require('./lib/encoding/bufferwriter');
+bitcore.encoding.Varint = require('./lib/encoding/varint');
 
 // utilities
-fcash_base.util = {};
-fcash_base.util.buffer = require('./lib/util/buffer');
-fcash_base.util.js = require('./lib/util/js');
-fcash_base.util.preconditions = require('./lib/util/preconditions');
+bitcore.util = {};
+bitcore.util.buffer = require('./lib/util/buffer');
+bitcore.util.js = require('./lib/util/js');
+bitcore.util.preconditions = require('./lib/util/preconditions');
 
 // errors thrown by the library
-fcash_base.errors = require('./lib/errors');
+bitcore.errors = require('./lib/errors');
 
 // main bitcoin library
-fcash_base.Address = require('./lib/address');
-fcash_base.Block = require('./lib/block');
-fcash_base.MerkleBlock = require('./lib/block/merkleblock');
-fcash_base.BlockHeader = require('./lib/block/blockheader');
-fcash_base.HDPrivateKey = require('./lib/hdprivatekey.js');
-fcash_base.HDPublicKey = require('./lib/hdpublickey.js');
-fcash_base.Networks = require('./lib/networks');
-fcash_base.Opcode = require('./lib/opcode');
-fcash_base.PrivateKey = require('./lib/privatekey');
-fcash_base.PublicKey = require('./lib/publickey');
-fcash_base.Script = require('./lib/script');
-fcash_base.Transaction = require('./lib/transaction');
-fcash_base.URI = require('./lib/uri');
-fcash_base.Unit = require('./lib/unit');
+bitcore.Address = require('./lib/address');
+bitcore.Block = require('./lib/block');
+bitcore.MerkleBlock = require('./lib/block/merkleblock');
+bitcore.BlockHeader = require('./lib/block/blockheader');
+bitcore.HDPrivateKey = require('./lib/hdprivatekey.js');
+bitcore.HDPublicKey = require('./lib/hdpublickey.js');
+bitcore.Networks = require('./lib/networks');
+bitcore.Opcode = require('./lib/opcode');
+bitcore.PrivateKey = require('./lib/privatekey');
+bitcore.PublicKey = require('./lib/publickey');
+bitcore.Script = require('./lib/script');
+bitcore.Transaction = require('./lib/transaction');
+bitcore.URI = require('./lib/uri');
+bitcore.Unit = require('./lib/unit');
 
 // dependencies, subject to change
-fcash_base.deps = {};
-fcash_base.deps.bnjs = require('bn.js');
-fcash_base.deps.bs58 = require('bs58');
-fcash_base.deps.Buffer = Buffer;
-fcash_base.deps.elliptic = require('elliptic');
-fcash_base.deps._ = require('lodash');
+bitcore.deps = {};
+bitcore.deps.bnjs = require('bn.js');
+bitcore.deps.bs58 = require('bs58');
+bitcore.deps.Buffer = Buffer;
+bitcore.deps.elliptic = require('elliptic');
+bitcore.deps._ = require('lodash');
 
 // Internal usage, exposed for testing/advanced tweaking
-fcash_base.Transaction.sighash = require('./lib/transaction/sighash');
+bitcore.Transaction.sighash = require('./lib/transaction/sighash');
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer)
 },{"./lib/address":1,"./lib/block":4,"./lib/block/blockheader":3,"./lib/block/merkleblock":5,"./lib/crypto/bn":6,"./lib/crypto/ecdsa":7,"./lib/crypto/hash":8,"./lib/crypto/point":9,"./lib/crypto/random":10,"./lib/crypto/signature":11,"./lib/encoding/base58":12,"./lib/encoding/base58check":13,"./lib/encoding/bufferreader":14,"./lib/encoding/bufferwriter":15,"./lib/encoding/varint":16,"./lib/errors":17,"./lib/hdprivatekey.js":19,"./lib/hdpublickey.js":20,"./lib/networks":21,"./lib/opcode":22,"./lib/privatekey":23,"./lib/publickey":24,"./lib/script":25,"./lib/transaction":28,"./lib/transaction/sighash":36,"./lib/unit":40,"./lib/uri":41,"./lib/util/buffer":42,"./lib/util/js":43,"./lib/util/preconditions":44,"./package.json":320,"bn.js":280,"bs58":281,"buffer":47,"elliptic":285,"lodash":319}]},{},[]);

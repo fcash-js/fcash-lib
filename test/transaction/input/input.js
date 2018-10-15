@@ -4,13 +4,13 @@ var should = require('chai').should();
 var expect = require('chai').expect;
 var _ = require('lodash');
 
-var fcashBase = require('../../..');
-var errors = fcashBase.errors;
-var PrivateKey = fcashBase.PrivateKey;
-var Address = fcashBase.Address;
-var Script = fcashBase.Script;
-var Networks = fcashBase.Networks;
-var Input = fcashBase.Transaction.Input;
+var bitcore = require('../../..');
+var errors = bitcore.errors;
+var PrivateKey = bitcore.PrivateKey;
+var Address = bitcore.Address;
+var Script = bitcore.Script;
+var Networks = bitcore.Networks;
+var Input = bitcore.Transaction.Input;
 
 describe('Transaction.Input', function() {
 

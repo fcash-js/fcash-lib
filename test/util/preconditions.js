@@ -2,10 +2,10 @@
 
 var should = require('chai').should();
 
-var fcashBase = require('../..');
-var errors = fcashBase.errors;
-var $ = fcashBase.util.preconditions;
-var PrivateKey = fcashBase.PrivateKey;
+var bitcore = require('../..');
+var errors = bitcore.errors;
+var $ = bitcore.util.preconditions;
+var PrivateKey = bitcore.PrivateKey;
 
 describe('preconditions', function() {
 

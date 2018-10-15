@@ -1,11 +1,11 @@
 'use strict';
 
 var benchmark = require('benchmark');
-var fcash_base = require('..');
+var bitcore = require('..');
 var async = require('async');
 var blockData = require('./block-357238.json');
 
-var maxTime = 30;
+var maxTime = 10;
 
 console.log('Benchmarking Script');
 console.log('---------------------------------------');
@@ -15,7 +15,7 @@ async.series([
 
     var c = 0;
     var scripts = [];
-    var block = fcash_base.Block.fromString(blockData);
+    var block = bitcore.Block.fromString(blockData);
     for (var i = 0; i < block.transactions.length; i++) {
       var tx = block.transactions[i];
       for (var j = 0; j < tx.inputs.length; j++) {
